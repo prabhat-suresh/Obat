@@ -1,4 +1,4 @@
-(*open Otoml*)
+let config_file = "/home/prabhat/.config/obat/config.toml"
 
 type config = {
   low_threshold : int;
@@ -13,7 +13,7 @@ let default_config =
     low_threshold = 20;
     critical_threshold = 15;
     high_threshold = 80;
-    polling_interval = 60.0;
+    polling_interval = 10.0;
     enable_hibernation = false;
   }
 
@@ -39,17 +39,4 @@ let read_config file =
       enable_hibernation =
         Otoml.get_boolean @@ Hashtbl.find toml "enable_hibernation";
     }
-  with Stdlib.Sys_error _ ->
-    failwith @@ "No config file found in ~/.config/obat"
-
-(*let watch_config ~env file on_reload =*)
-(*  Eio.Fiber.fork ~sw:env#sw (fun () ->*)
-(*      let inotify = Eio_inotify.create () in*)
-(*      let _ = Eio_inotify.add_watch inotify file [ Inotify.S_Modify ] in*)
-(*      while true do*)
-(*        let event = Eio_inotify.read inotify in*)
-(**)
-(*        Logs.info (fun m -> m "Configuration file changed, reloading...");*)
-(*        print_endline (Inotify.string_of_event event);*)
-(*        on_reload ()*)
-(*      done)*)
+  with Stdlib.Sys_error _ -> failwith "No config file found in ~/.config/obat"

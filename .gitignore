@@ -1,1 +1,6 @@
-_build/
+_build/*
+!_build/default/
+_build/default/*
+!/_build/default/bin
+/_build/default/bin/*
+!/_build/default/bin/main.exe

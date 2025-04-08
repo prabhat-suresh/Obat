@@ -6,3 +6,7 @@ lib: [
 bin: [
   "_build/install/default/bin/Obat"
 ]
+doc: [
+  "_build/install/default/doc/Obat/LICENSE"
+  "_build/install/default/doc/Obat/README.md"
+]
