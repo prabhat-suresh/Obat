@@ -1,0 +1,4 @@
+(executable
+ (public_name Obat)
+ (name main)
+ (libraries Obat eio_main))
