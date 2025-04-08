@@ -1,4 +1,7 @@
-let config_file = "/home/prabhat/.config/obat/config.toml"
+let config_file =
+  match Sys.getenv_opt "HOME" with
+  | Some home -> Filename.concat home ".config/obat/config.toml"
+  | None -> failwith "$HOME environment variable has not been set"
 
 type config = {
   low_threshold : int;
