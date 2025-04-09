@@ -41,5 +41,8 @@ let rec monitor_battery_loop ~env =
         "Unplug power supply";
       battery_state := ChargedNotificationSent
   | _, _ -> ());
+  print_endline "before sleep";
   Eio.Time.sleep env#clock !conf.polling_interval;
+  Printf.printf "low: %d, high: %d, critical: %d\n" !conf.low_threshold
+    !conf.high_threshold !conf.critical_threshold;
   monitor_battery_loop ~env

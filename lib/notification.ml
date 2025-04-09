@@ -1,4 +1,5 @@
 let obat_notification_id = 999999999
+(*All Obat notifications use this Id (Just a hack for easily replacing old notifications with new ones) *)
 
 let send_notification urgency_level summary body =
   let cmd =

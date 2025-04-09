@@ -42,4 +42,6 @@ let read_config file =
       enable_hibernation =
         Otoml.get_boolean @@ Hashtbl.find toml "enable_hibernation";
     }
-  with Stdlib.Sys_error _ -> failwith "No config file found in ~/.config/obat"
+  with
+  | Stdlib.Sys_error _ -> failwith "No config file found in ~/.config/obat"
+  | _ -> failwith "config.toml parsing error"
